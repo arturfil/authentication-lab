@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 const app = express();
 
@@ -11,9 +12,13 @@ mongoose.connect('mongodb://localhost/soccerteams')
 // general middlwares
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 // routes
+
+app.use('/api/auth' , require('./routes/player'));
+app.use('/api/players' , require('./routes/player'));
+app.use('/api/teams', require('./routes/team'))
 
 // listen to port
 app.listen(5000, () => {
