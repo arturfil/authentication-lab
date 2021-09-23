@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get('/', validateJwt, getAllTeams)
 router.get('/team', validateJwt, getTeamById)
-router.post('/team/:id', validateJwt, createTeam)
+router.post('/team', validateJwt, createTeam)
 router.put('/team/:id', validateJwt, updateTeam)
 router.delete('/team/:id',validateJwt, deleteTeam)
 

@@ -16,7 +16,7 @@ app.use(cors());
 
 // routes
 
-app.use('/api/auth' , require('./routes/player'));
+app.use('/api/auth' , require('./routes/user'));
 app.use('/api/players' , require('./routes/player'));
 app.use('/api/teams', require('./routes/team'))
 
