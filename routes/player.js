@@ -10,6 +10,7 @@ const router = express.Router();
 
 
 const { validateJwt } = require('../middlewares/validateJwt')
+const { validateFields } = require('../middlewares/validateField')
 
 
 // GET all meetings
@@ -19,7 +20,14 @@ router.get('/', validateJwt,  getAllPlayers) // validateJwt
 router.get('/player/:id', validateJwt, getPlayerById)
 
 // POST meeting
-router.post('/player', validateJwt, createPlayer)
+router.post('/player', [
+  check("name", "Please enter name").not().isEmpty(),
+  check("team", "Please enter team").not().isEmpty(),
+  check("age", "Please enter age").not().isEmpty(),
+  validateFields,
+  validateJwt
+]
+, createPlayer)
 
 // PUT category
 router.put('/player/:id', validateJwt, updatePlayer)

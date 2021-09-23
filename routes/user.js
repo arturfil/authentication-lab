@@ -16,6 +16,10 @@ router.post("/signup",[
 ], userSignup)
 
 // Login
-router.post("/login", userLogin)
+router.post("/login", [
+  check("email", "Please enter a email").not().isEmpty(),
+  check("password", "Please enter a password").not().isEmpty(),
+  validateFields
+], userLogin)
 
 module.exports = router;
